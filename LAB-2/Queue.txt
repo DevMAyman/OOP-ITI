@@ -1,0 +1,78 @@
+#include <iostream>
+
+using namespace std;
+class Queue{
+    int head;
+    int tail;
+    int *arr;
+    int Size;
+    public:
+    Queue(int Size){
+        (*this).Size = Size;
+        (*this).head=-1;
+        (*this).tail=-1;
+        (*this).arr = new int[Size]{0};
+    }
+    void push(int numb){
+        if(tail==-1||head==-1){
+            tail++;
+            head++;
+            arr[tail]=numb;
+        }
+        else if(head==0&&(tail!=Size-1)){
+            tail++;
+            arr[tail]=numb;
+        }
+        else if(head==0&&tail==Size-1){
+            cout<<"You can not add!";
+        }
+    }
+    int pop(){
+        if(tail!=-1){
+            int x = arr[head];
+            int i;
+            for(i=0;i<tail;i++){
+                arr[i]=arr[i+1];
+            }
+
+            arr[tail]=0;
+            tail--;
+        return x;
+        }
+        else if(tail==-1){
+                cout<<"Empty";
+        }
+    }
+     void display(){
+    int i;
+    for(i=0;i<=tail;i++){
+        cout<<arr[i];
+        if(i!=tail){
+            cout<<", ";
+        }
+    }
+    cout<<endl;
+  }
+
+};
+int main()
+{
+    Queue *my_queue = new Queue(5);
+    (*my_queue).push(5); //5
+    (*my_queue).push(1); //1
+    (*my_queue).push(2); //2
+    (*my_queue).push(6); //6
+    cout<<(*my_queue).pop();//5
+    cout<<(*my_queue).pop();//1
+    cout<<(*my_queue).pop();//2
+    (*my_queue).push(10); //10
+    cout<<(*my_queue).pop();//6
+    cout<<(*my_queue).pop();//10
+    (*my_queue).pop();//Empty
+
+
+
+
+    //cout<<(*my_queue).display();
+    return 0;
+}
