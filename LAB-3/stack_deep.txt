@@ -1,0 +1,90 @@
+#include <iostream>
+using namespace std;
+class Stack{
+    int arr_size;
+    int * arr;
+    int top;
+    public:
+    Stack(int arr_size){
+        /*cout<<"not copy";*/
+        (*this).arr_size=arr_size;
+        top=-1;
+        arr=new int[arr_size]{0};
+    }
+    Stack(Stack & s){
+    /*cout<<"I am copy";*/
+        (*this).top=s.top;
+        (*this).arr=new int[s.arr_size]{0};
+        for(int i=0; i<top;i++){
+            (*this).arr[i]=s.arr[i];
+        }
+
+    }
+    /*Stack(int arr_size){
+        (*this).arr_size=arr_size;
+        top=-1;
+        arr=new int[arr_size]{0};
+    }*/
+
+    int get_top(){
+        return top;
+    }
+
+    void push(int numb){
+        if( top < arr_size-1){
+            top++;
+            arr[top] = numb;
+        }
+        else{
+            cout<<"Stack is full.";
+        }
+    }
+
+    int pop(void){
+        int x=0;
+        if( top > -1){
+            x = (*this).arr[top];
+            top--;
+        }
+        else if(top==-1){
+            cout<<"Stack is empty";
+        }
+        return x;
+    }
+
+    void display(){
+    int i;
+    for(i=0;i<=top;i++){
+        cout<<arr[i];
+        if(i!=top){
+            cout<<", ";
+        }
+    }
+    cout<<endl;
+  }
+  ~Stack(){
+      delete[] arr;
+  }
+};
+
+void modifyShallowCopy(Stack s);
+int main()
+{
+    Stack my_stack(5);
+    my_stack.push(1);
+    my_stack.push(2);
+    my_stack.push(3);
+    modifyShallowCopy(my_stack);
+    /*Expect that my array return*/
+    cout<<my_stack.pop()<<endl;//1
+    cout<<my_stack.pop()<<endl;//2
+    cout<<my_stack.pop()<<endl;//3
+    cout<<my_stack.pop()<<endl;//4
+    cout<<my_stack.pop()<<endl;//5
+    return 0;
+}
+
+void modifyShallowCopy(Stack s){
+    s.push(4);
+    s.push(5);
+}
