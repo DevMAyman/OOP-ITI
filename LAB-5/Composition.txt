@@ -1,0 +1,122 @@
+#include <iostream>
+#include <graphics.h>
+using namespace std;
+
+class Point{
+int x;
+int y;
+public:
+    Point(int x=0, int y=0){
+            (*this).x=x;
+            (*this).y=y;
+    }
+    int getX(){
+        return (*this).x;
+    }
+    int getY(){
+        return (*this).y;
+    }
+    void setX(int x){
+        (*this).x=x;
+    }
+
+    void setY(int y){
+        (*this).y=y;
+    }
+
+    void setXY(int x,int y){
+        (*this).x=x;
+        (*this).y=y;
+    }
+
+};/// End of point
+
+class Line{
+    Point pl,pr;
+    public:
+    Line(int plx,int ply,int prx,int pry):pl(plx,ply),pr(prx,pry){
+    }
+    Line(){
+        //Empty
+    }
+    Point getLeftPoint(){
+        return (*this).pl;
+    }
+    Point getRightPoint(){
+        return (*this).pr;
+    }
+    void Print(){
+        cout<<(*this).pl.getX()<<endl;
+        cout<<(*this).pl.getY()<<endl;
+        cout<<(*this).pr.getX()<<endl;
+        cout<<(*this).pr.getY()<<endl;
+    }
+    void drawLine(){
+        initwindow(650,650);
+        line((*this).getLeftPoint().getX(),(*this).getLeftPoint().getY(),(*this).getRightPoint().getX(),(*this).getRightPoint().getY());
+        getch();
+
+    }
+
+    void drawLine(Point p1,Point p2){
+        initwindow(650,650);
+        line(p1.getX(),p1.getY(),p2.getX(),p2.getY());
+        getch();
+
+    }
+
+}; /// End of line
+
+class Circle{
+    Point p;
+    int R;
+    public:
+    Circle(int R, int x, int y):p(x,y){
+        (*this).R=R;
+    }
+     Circle(int R){
+        (*this).R=R;
+    }
+        int getR(){
+        return (*this).R;
+    }
+    Point getPoint(){
+        return (*this).p;
+    }
+    void setR(int R){
+        (*this).R=R;
+    }
+    void drawCircle(){
+
+        initwindow(650,650);
+        circle( (*this).getPoint().getX(),(*this).getPoint().getY(),(*this).getR());
+        getch();
+
+    }
+        void drawCircle(Point p){
+        initwindow(650,650);
+        circle(p.getX(),p.getY(),(*this).R);
+        getch();
+
+    }
+};
+
+int main()
+{
+    ///************************Composition**********************
+    /*Line l(300,300,500,300);
+    l.drawLine();*/
+    /*Circle c(100,200,200);
+    c.drawCircle();*/
+    ///************************Association**********************
+    /*Point p1(100,200);
+    Point p2(500,200);
+    Line l5;
+    l5.drawLine(p1,p2);*/
+    /*Point p(50,60);
+    Circle c(50);
+    c.drawCircle(p);*/
+    ///*****************************Aggregation*******************
+
+    return 0;
+}

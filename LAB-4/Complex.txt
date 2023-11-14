@@ -1,0 +1,157 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+class Complex{
+int real;
+int image;
+public:
+
+Complex(int real=0, int image=0){
+(*this).real= real;
+(*this).image= image;
+}
+
+void setReal(int real){
+(*this).real = real;
+}
+
+int getReal(){
+return real;
+}
+int getImage(){
+return image;
+}
+void setImage(int image){
+(*this).image = image;
+}
+void setComplex(int image,int real){
+    (*this).image = image;
+    (*this).real = real;
+}
+
+void print(){
+    if(image>0){
+    cout<<real<<"+"<<image<<"i"<<endl;
+    }
+
+    else if(0==image){
+    cout<<real<<endl;
+    }
+
+    if(image<0){
+    cout<<real<<image<<"i"<<endl;
+    }
+
+}
+/// + overloading
+Complex operator + (Complex &c){
+        Complex res(((*this).real+c.real),((*this).image+c.image));
+        return res;
+}
+/// - overloading
+Complex operator - (Complex &c){
+        Complex res(((*this).real-c.real),((*this).image-c.image));
+        return res;
+}
+/// += overloading
+operator += (Complex &c){
+/*(*this).real=(*this).real+c.real;
+(*this).image=(*this).image+c.image;*/
+(*this).real+=c.real;
+(*this).image+=c.image;
+}
+
+/// -= overloading
+ operator -= (Complex &c){
+/*(*this).real=(*this).real+c.real;
+(*this).image=(*this).image+c.image;*/
+(*this).real-=c.real;
+(*this).image-=c.image;
+}
+
+/// ++ overloading prefix
+Complex operator++ (){
+((*this).real)=((*this).real)+1;
+return *this;
+}
+/// ++ overloading postfix
+Complex operator++ (int){
+    Complex temp = *this;
+    ((*this).real)=((*this).real)+1;
+    return temp;
+}
+/// + overload (int , complex)
+Complex operator +(int number){
+    Complex result(((*this).real+ number),(*this).image);
+    return result;
+}
+/// - overload (int , complex)
+Complex operator -(int number){
+    Complex result(((*this).real- number),(*this).image);
+    return result;
+}
+/// == operator overload
+int operator == (Complex  &c){
+return (real == c.real  && image == c.image);
+}
+/// casting overload
+ operator float (){
+    return float(real);
+}
+int operator[](int i) {
+            if(i==0){
+            return (*this).real;
+            }
+            else if(i==1){
+            return (*this).image;
+            }
+                }
+int operator[](char* str) {
+            if(str=="real"){
+            return (*this).real;
+            }
+            else if(str=="image"){
+            return (*this).image;
+            }
+                }
+};///end class
+Complex operator+ (int number, Complex & c);
+Complex operator- (int number, Complex & c);
+int main()
+{
+    /*Complex c1(5,6);
+    Complex c2(6,10);
+    Complex c3;
+    c3=c1+c2;
+    c3.print();
+    c3+=c1;
+    c3.print();
+    ++c3;
+    c3.print();
+    c3++;
+    c3.print();*/
+    /*Complex c6;
+    Complex c7(2,6);
+    c6=c7+1;
+    c6.print();*/
+    /*Complex c6;
+    Complex c7(2,6);*/
+    Complex c8(2,6);
+    cout<<c8[0]<<endl;
+    cout<<c8["image"];
+    /*cout<<(float)c8<<endl;
+    cout<<(c7==c8)<<endl;
+    c6=5+c7;
+    c6.print();*/
+
+    return 0;
+}
+Complex operator+ (int number, Complex & c){
+    Complex result((c.getReal()+ number),c.getImage());
+    return result;
+}
+
+Complex operator- (int number, Complex & c){
+    Complex result((c.getReal()- number),c.getImage());
+    return result;
+}
