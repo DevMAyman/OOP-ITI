@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1700057502 source:c:\users\dell\desktop\iti\lab-6\main.cpp
+	<iostream>
+	<graphics.h>
+	"Point.h"
+	"Shape.h"
+	"Circle.h"
+	"Rectangular.h"
+	"Line.h"
+	"overloadFun.h"
+
+1700044783 c:\users\dell\desktop\iti\lab-6\include\point.h
+
+1700044783 c:\users\dell\desktop\iti\lab-6\include\shape.h
+
+1700044783 c:\users\dell\desktop\iti\lab-6\include\circle.h
+
+1700056156 c:\users\dell\desktop\iti\lab-6\include\rectangular.h
+
+1700044783 c:\users\dell\desktop\iti\lab-6\include\line.h
+
+1700057978 c:\users\dell\desktop\iti\lab-6\include\overloadfun.h
+	"iostream"
+	"overloadFun.h"
+
+1700057502 source:c:\users\dell\desktop\iti\c++\lab-7\main.cpp
+	<iostream>
+	<graphics.h>
+	"Point.h"
+	"Shape.h"
+	"Circle.h"
+	"Rectangular.h"
+	"Line.h"
+	"overloadFun.h"
+
+1700044783 c:\users\dell\desktop\iti\c++\lab-7\include\point.h
+
+1700044783 c:\users\dell\desktop\iti\c++\lab-7\include\shape.h
+
+1700044783 c:\users\dell\desktop\iti\c++\lab-7\include\circle.h
+
+1700056156 c:\users\dell\desktop\iti\c++\lab-7\include\rectangular.h
+
+1700044783 c:\users\dell\desktop\iti\c++\lab-7\include\line.h
+
+1700057978 c:\users\dell\desktop\iti\c++\lab-7\include\overloadfun.h
+	"iostream"
+	"overloadFun.h"
+
