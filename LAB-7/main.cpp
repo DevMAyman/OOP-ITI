@@ -25,7 +25,7 @@ int main()
         if(typeOfShape==1){
             cout<<"Enter the data of line"<<endl;
             Line * l = new Line();
-
+            cin>>l;
             Shapes[i]=l;
 
         }
